@@ -34,6 +34,7 @@ public class TableServiceImpl implements TableService {
      *
      * @return
      */
+    //For simplicity’s sake a List is used. Pageable and Page classes are preferable for larger data sets.
     @Override
     public List<TableDto> findAll() {
         List<TableEntity> tables = tableRepository.findAll();
@@ -98,7 +99,9 @@ public class TableServiceImpl implements TableService {
     @Override
     @Transactional
     public void delete(Long id) {
-        tableRepository.deleteById(id);
+        TableEntity table = tableRepository.findEntityById(id);
+
+        tableRepository.delete(table);
 
         log.info("Table with ID {} has been deleted", id);
     }
