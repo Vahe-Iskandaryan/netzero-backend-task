@@ -7,10 +7,12 @@ import backend.task.restaurant.model.persistence.entity.table.TableEntity;
 import backend.task.restaurant.model.persistence.repository.table.TableRepository;
 import backend.task.restaurant.model.service.table.TableService;
 import backend.task.restaurant.model.service.table.mapper.TableMapper;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
+@Validated
 public class TableServiceImpl implements TableService {
 
     @Autowired
@@ -63,7 +66,7 @@ public class TableServiceImpl implements TableService {
      */
     @Override
     @Transactional
-    public TableDto create(CreateTableRequest createTableRequest) {
+    public TableDto create(@Valid CreateTableRequest createTableRequest) {
         TableEntity table = tableMapper.toDto(createTableRequest);
 
         tableRepository.save(table);
@@ -81,7 +84,7 @@ public class TableServiceImpl implements TableService {
      */
     @Override
     @Transactional
-    public TableDto update(UpdateTableRequest updateTableRequest) {
+    public TableDto update(@Valid UpdateTableRequest updateTableRequest) {
         TableEntity table = tableRepository.findEntityById(updateTableRequest.getId());
 
         tableMapper.updateEntity(table, updateTableRequest);

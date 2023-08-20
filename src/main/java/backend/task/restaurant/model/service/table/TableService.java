@@ -3,6 +3,7 @@ package backend.task.restaurant.model.service.table;
 import backend.task.restaurant.model.dto.table.TableDto;
 import backend.task.restaurant.model.dto.table.requests.CreateTableRequest;
 import backend.task.restaurant.model.dto.table.requests.UpdateTableRequest;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public interface TableService {
      * @param createTableRequest
      * @return
      */
-    TableDto create(CreateTableRequest createTableRequest);
+    TableDto create(@Valid CreateTableRequest createTableRequest);
 
     /**
      * Updates the table based on given request.
@@ -42,7 +43,7 @@ public interface TableService {
      * @param updateTableRequest
      * @return
      */
-    TableDto update(UpdateTableRequest updateTableRequest);
+    TableDto update(@Valid UpdateTableRequest updateTableRequest);
 
     /**
      * Deletes the table based on given ID.

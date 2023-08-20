@@ -1,6 +1,6 @@
 package backend.task.restaurant.model.dto.table.requests;
 
-import backend.task.restaurant.model.persistence.entity.table.enums.Area;
+import backend.task.restaurant.model.dto.table.requests.base.TableRequest;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,15 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UpdateTableRequest {
+public class UpdateTableRequest extends TableRequest {
 
     private Long id;
-
-    private String name;
-
-    private Integer seatNumber;
-
-    private Area area;
-
-    private boolean reservable;
 }
